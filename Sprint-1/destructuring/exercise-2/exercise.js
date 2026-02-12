@@ -78,3 +78,10 @@ for (const { firstName, lastName, house } of hogwarts) {
   }
 }
 
+
+// Task 2: Display teachers who have pets
+for (const { firstName, lastName, occupation, pet } of hogwarts) {
+  if (occupation === "Teacher" && pet) {
+    console.log(`${firstName} ${lastName}`);
+  }
+}
