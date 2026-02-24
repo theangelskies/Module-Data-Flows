@@ -1,6 +1,6 @@
 let myLibrary = [];
 
-window.addEventListener("load", function (e) {
+window.addEventListener("load", function () {
   populateStorage();
   render();
 });
@@ -26,8 +26,22 @@ const pages = document.getElementById("pages");
 const check = document.getElementById("check");
 
 function submit() {
-  if (title.value === "" || author.value === "" || pages.value === "") {
-    alert("Please fill all fields!");
+  let missingFields = [];
+
+  if (title.value === "") {
+    missingFields.push("Title");
+  }
+
+  if (author.value === "") {
+    missingFields.push("Author");
+  }
+
+  if (pages.value === "") {
+    missingFields.push("Pages");
+  }
+
+  if (missingFields.length > 0) {
+    alert("Please fill the following field(s): " + missingFields.join(", "));
     return false;
   }
 
@@ -37,7 +51,7 @@ function submit() {
 
   render();
 
-  // Optional: clear form after submit
+  // Clear form after submit
   title.value = "";
   author.value = "";
   pages.value = "";
